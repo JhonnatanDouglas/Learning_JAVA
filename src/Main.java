@@ -1,41 +1,27 @@
 public class Main {
     public static void main(String[] args) {
-        for(int i = 0; i <= 10; i++) {
-            if (i > 5) {
-                System.out.println("Numero é " + i);
-            } else if (i == 5) {
-                System.out.println("Numero é igual a 5.");
-            } else {
-                System.out.println("Numero menor do que 5.");
-            }
-        }
+        // Dados primitivos - Conversa o mais proximo do binario o possivel
 
-        int contador = 0;
+        // Tipos primitivos - numericos
+        byte val1 = -128; // -128 a 127
+        short val2 = -32768; // -32768 ate 32767
+        int val3 = 2; // 2 milhoes
+        long val4 = 1; // 1 bilhao
 
-        while (contador < 5) {
-            System.out.println("Contador: " + contador);
-            contador++;
-        }
+        // Tipos primitivos - Flutuantes
+        float val5 = 1.00f; // Precisa por um "f" se nao, nao entende como flutuante
+        double val6 = 1.00; // Nao precisa de "d"
 
-        char grade = 'B';
+        // Tipos primitivos - Char
+        char val7 = 'a';
 
-        switch (grade) {
-            case 'A':
-                System.out.println("Valor é A");
-                break;
-            case 'B':
-                System.out.println("Valor é B");
-                break; 
-            default:
-                System.out.println("Nota invalida");
-        }
-
-        // tambem tem como fazer o switch e uma linha so: 
-
-        // case 'A' -> System.out.println("Valor é A");
-        // case 'B' -> System.out.println("Valor é B");
-        // default -> System.out.println("Nota invalida");
+        // Tipos primitivos - Boolean
+        boolean val8 = true;
 
 
+        // Tipos de referencia
+        String nome = "leonhart";
+        int idade = 19;
+        double litros = 2.4;
     }
 }
