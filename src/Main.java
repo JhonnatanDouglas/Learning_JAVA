@@ -1,18 +1,41 @@
-
-import java.util.ArrayList;
-
 public class Main {
     public static void main(String[] args) {
-        int idade = 24;
-        String nome = "leonhart";
-        double altura = 1.62; // double sao numero com precisao
+        for(int i = 0; i <= 10; i++) {
+            if (i > 5) {
+                System.out.println("Numero é " + i);
+            } else if (i == 5) {
+                System.out.println("Numero é igual a 5.");
+            } else {
+                System.out.println("Numero menor do que 5.");
+            }
+        }
 
-        // Voce pode ate usar var em todos, ele ira pegar pelo valor para saber qual tipo é
-        // Voce pode ver isso passando o mouse em cima do nome da variavel
-        var idade2 = 24;
-        var nome2 = "leonhart";
-        var altura2 = 1.62; 
+        int contador = 0;
 
-        var lista = new ArrayList<String>(); // Usar o var quando o tipo de dado for bem explicito sobre o que é, e quando nao for, usar o int, double ou String
+        while (contador < 5) {
+            System.out.println("Contador: " + contador);
+            contador++;
+        }
+
+        char grade = 'B';
+
+        switch (grade) {
+            case 'A':
+                System.out.println("Valor é A");
+                break;
+            case 'B':
+                System.out.println("Valor é B");
+                break; 
+            default:
+                System.out.println("Nota invalida");
+        }
+
+        // tambem tem como fazer o switch e uma linha so: 
+
+        // case 'A' -> System.out.println("Valor é A");
+        // case 'B' -> System.out.println("Valor é B");
+        // default -> System.out.println("Nota invalida");
+
+
     }
 }
