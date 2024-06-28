@@ -1,23 +1,16 @@
-public class Carro {
-    // Atributos de classe
-    String marca;
-    int ano;
-    String cor;
-
-    // Construtores
-
-    Carro(String marca, int ano, String cor) {
-        this.marca = marca;
-        this.ano = ano;
-        this.cor = cor;
+public class Carro extends Veiculo {
+    public void buzinar() {
+        System.out.println("Fonfon!");
     }
 
-    // Metodos de classe
-    void acelerar() {
-        System.out.println("Carro acelerando");
+    // Metodo de sobrecarga, pois ele tem outros comportamentos por mais que tenha o mesmo nome
+    public void buzinar(String buzina) {
+        System.out.println(buzina);
     }
 
-    void frear() {
-        System.out.println("Carro freando");
+    // Metodo de sobrescrita
+    @Override
+    public void mover() {
+        System.out.println("Carro em movimento");
     }
 }

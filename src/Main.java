@@ -1,9 +1,12 @@
 public class Main {
     public static void main(String[] args) {
-        var meuCarro = new Carro("Toyota", 2020, "Vermelho");
-        meuCarro.acelerar();
-        meuCarro.frear();
+        var meuCarro = new Carro();
+        meuCarro.buzinar();
 
-        System.out.println(meuCarro.cor);
+        // A sobrescrita foi feita na classe carro
+        meuCarro.mover();
+
+        // sobrecarga de metodo
+        meuCarro.buzinar("bibi");
     }
 }
