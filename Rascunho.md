@@ -217,3 +217,36 @@ public class CarroAbstrato implements VeiculoAbstrato {
     }
 }
 ```
+
+<!-- ------------------------------------------------------------------ -->
+<!-- ------------------------------------------------------------------ -->
+<!-- ------------------------------------------------------------------ -->
+
+<!-- Getter e Settter -->
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        var pessoa = new Pessoa();
+        System.out.println(pessoa.getNome());
+        pessoa.setNome("Annie");
+        System.out.println(pessoa.getNome());
+    }
+}
+```
+
+```java
+public class Pessoa {
+    private String nome = "Leonhart";
+
+    // Get para quando voce quer buscar algo
+    public String getNome() {
+        return this.nome + ".";
+    }
+
+    // Set para quando voce quiser modificar algo
+    public void setNome(String novoNome) {
+        this.nome = novoNome;
+    }
+}
+```
