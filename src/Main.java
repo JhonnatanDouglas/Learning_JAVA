@@ -1,8 +1,16 @@
 public class Main {
     public static void main(String[] args) {
-        var pessoa = new Pessoa();
-        System.out.println(pessoa.getNome());
-        pessoa.setNome("Annie");
-        System.out.println(pessoa.getNome());
+        var meuCarro = new Carro();
+
+        // Public
+        System.out.println(meuCarro.marca);
+        meuCarro.marca = "Toyota";
+        System.out.println(meuCarro.marca);
+
+        // Protected
+        System.out.println(meuCarro.ano);
+
+        // Private
+        System.out.println(meuCarro.getModelo());
     }
 }
