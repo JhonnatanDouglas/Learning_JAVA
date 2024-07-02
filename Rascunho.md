@@ -255,6 +255,39 @@ public class Pessoa {
 <!-- ------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------ -->
 
+```java
+public class Main {
+    public static void main(String[] args) {
+        var meuCarro = new Carro();
+
+        // Public
+        System.out.println(meuCarro.marca);
+        meuCarro.marca = "Toyota";
+        System.out.println(meuCarro.marca);
+
+        // Protected
+        System.out.println(meuCarro.ano);
+
+        // Private
+        System.out.println(meuCarro.getModelo());
+    }
+}
+
+public class Carro {
+    public String marca = "Honda"; // Nivel que mais permite acesso
+    protected int ano = 2020; // So da pra acessar se for acessada de outra classe ou em classes do mesmo pacote (pasta)
+    private String modelo = "Tracker"; // So pode ser modificado dentro da classe onde ele é declarado, mais nem um outro lugar
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public int getAno() {
+        return ano;
+    }
+}
+```
+
 <!-- ------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------ -->
