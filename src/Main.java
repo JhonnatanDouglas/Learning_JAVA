@@ -1,59 +1,44 @@
-import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
+        var frutas = Arrays.asList("Maça", "Banana", "Cereja").stream(); // manipulaçao de sequencias e so pode percorrer ele so uma vez (o stream)
+        var frutas2 = Arrays.asList("Maça", "Banana", "Cereja");
 
-        // Classe de Inteiros 
-        var numeros = new ArrayList<Integer>();
+        // var primeiraFruta = frutas.filter(f -> f.startsWith("M")).findFirst(); // recomendado usar
+        // System.out.println(primeiraFruta.get());
+        
+        // var primeiraFruta2 = frutas.filter(f -> f.startsWith("M")).toList(); // nao recomendado
+        // System.out.println(primeiraFruta2.get(0));
 
-        System.out.println(numeros.size()); // 0
-        numeros.add(1);
-        numeros.add(2);
-        numeros.add(3);
-        System.out.println(numeros.size()); // 3
-        System.out.println(numeros.get(0)); // 1
+// 
 
-        System.out.println(numeros.remove(2)); // 3
-        System.out.println(numeros.size()); // 2
+        // var frutasUpperCase = frutas.map(f -> f.toUpperCase()).toList();
+        // System.out.println(frutasUpperCase.getFirst());
 
-        numeros.clear();
-        System.out.println(numeros.size()); // 0
+        // var frutasUpperCase = frutas.map(String::toUpperCase).toList();
+        // System.out.println(frutasUpperCase.getFirst());
 
-        System.out.println(numeros.isEmpty()); // true
+// 
 
+        // var frutasOrdenadas = frutas.sorted().toList();
+        // System.out.println(frutasOrdenadas.getFirst());
+        // System.out.println(frutasOrdenadas.get(1));
 
-        System.out.println(numeros.size()); // 0
-        numeros.add(1);
-        numeros.add(2);
-        numeros.add(3);
-        numeros.add(10);
-        System.out.println(numeros.size()); // 3
+// 
 
-        var value = 10;
-        System.out.println(numeros.contains(value)); // true
-
-        numeros.set(0, 999); // seta para os indeces que EXISTEM, os que nao existem ele nao cria, da erro
-        System.out.println(numeros.get(0)); // 999
+        // frutas.forEach(f -> System.out.println(f)); // Mostra a lista inteira
+        // frutas.forEach(System.out::println); // Mostra a lista inteira
 
 
-        // Classe de Strings
-        var nome = "Leonhart";
+        // Iteraçoes em arrays
 
-        nome.length(); // Verificar o tamanho
-        nome.toLowerCase(); // Transformar para caixa baixa
-        nome.trim(); // remove todo espaço branco dentro da string
-        nome.contains("a"); // verifica se "a" contem dentro da string, seria true
+        // for(int i = 0; i < frutas2.size(); i++) {
+        //     System.out.println(frutas2.get(i));
+        // }
 
-        var frutas = "maça, banana, morango";
-        frutas.split(","); // removera todas as virgulas
-
-        // Classe de double/int
-        var personagem = "Annie";
-        var idade = 18;
-        var altura = 1.67;
-
-        var resumo = String.format("Nome: %s, Idade: %d, Altura: %2f", personagem, idade, altura);
-        System.out.println(resumo);
-
+        for (String fruta: frutas2) {
+            System.err.println(fruta);
+        }
     }
 }
