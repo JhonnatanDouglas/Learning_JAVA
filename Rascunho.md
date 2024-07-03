@@ -437,3 +437,58 @@ public class Main {
 <!-- ------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------ -->
+
+<!-- Criar Exceções personalizadas -->
+
+```java
+public class SaldoInsuficienteException extends  Exception {
+    public SaldoInsuficienteException() {
+        super("Saldo Insuficiente"); // Mensagem padrão
+    }
+
+    public SaldoInsuficienteException(String message) {
+        super(message); // Caso for passar uma mensagem
+    }
+}
+
+```
+
+```java
+public class Exemplo {
+    public void verificarIdade(int idade) {
+        if(idade < 18) {
+            throw new IllegalArgumentException("A idade minima deve ser 18 anos.");
+        }
+    }
+
+    public void verificarSaldo(int saldo) throws Exception { // precisa indicar que ele extende de Exception para funcionar
+        if(saldo <= 0) {
+            throw new SaldoInsuficienteException("Saldo indisponivel");
+        }
+    }
+}
+```
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        var verificadorDeIdade = new Exemplo();
+
+        // try {
+        //     verificadorDeIdade.verificarIdade(17);
+        // } catch (IllegalArgumentException e) {
+        //     System.out.println("Idade menor do que 18.");
+        // } catch (Exception e) {
+        //     System.out.println("Idade não identificada.");
+        // }
+
+        try {
+            verificadorDeIdade.verificarSaldo(0);
+        } catch (SaldoInsuficienteException e) {
+            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            System.err.println("Saldo nao identificado.");
+        }
+    }
+}
+```

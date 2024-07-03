@@ -1,18 +1,22 @@
-import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-                
-        try {
-            var list = new ArrayList<String>();
-            list.add( "valor1");
-            System.out.println(list.get(1));
-        } catch (IndexOutOfBoundsException e) { // Se o erro for IndexOutOfBoundsException, entao sera tratado dessa forma
-            System.out.println("Índice fora dos limites!");
-        } catch (Exception e) { // caso nao seja o acima, ele sera tratado dessa forma
-            System.out.println(e.getMessage());
-        }
+        var verificadorDeIdade = new Exemplo();
         
-        // Exception e ou RuntimeExcpetion e
+        // try {
+        //     verificadorDeIdade.verificarIdade(17);
+        // } catch (IllegalArgumentException e) {
+        //     System.out.println("Idade menor do que 18.");
+        // } catch (Exception e) {
+        //     System.out.println("Idade não identificada.");
+        // }
+    
+        try {
+            verificadorDeIdade.verificarSaldo(0);
+        } catch (SaldoInsuficienteException e) {
+            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            System.err.println("Saldo nao identificado.");
+        }
     }
 }
