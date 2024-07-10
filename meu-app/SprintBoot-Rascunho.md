@@ -36,3 +36,48 @@ E voce deve instalar no arquivo POM.xml. Onde tiver
 ```
 
 <!-- ------------------------------------------------------------ -->
+
+<!-- Criaçao de rotas GET -->
+
+Cria um novo arquivo, exeplo: PrimeiraRotaGet.java e coloca o seguinte:
+
+```java
+package com.br.leonhart.meu_app;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class PrimeiraRotaGet {
+    @GetMapping("/rota_get")
+    public String read() {
+        return "Minha primeira rota get";
+    }
+}
+
+// Acessando no Insomniaa: localhost:8080/rota_get
+```
+
+<!-- Criação da rota POST -->
+
+Cria um novo arquivo, exeplo: PrimeiraRotaPost.java e coloca o seguinte:
+
+```java
+package com.br.leonhart.meu_app;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class PrimeiraRotaPost {
+    @PostMapping("/rota_post")
+    public String create(@RequestBody String payload) { // Precisa desse "@RequestBody Tipagem Parametro" para que ele ache o que voce quer mandar
+        return payload;
+    }
+}
+
+// Acessando no Insomniaa: localhost:8080/rota_post
+```
+
+<!-- ------------------------------------------------------------ -->
