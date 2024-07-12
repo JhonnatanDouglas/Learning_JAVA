@@ -101,3 +101,102 @@ public class BE04_15_Annotations {
     // }
 }
 ```
+
+<!-- ------------------------------------------------------------ -->
+
+<!-- BE04-16 | 📘 Aula - Implementando Criação e Leitura com Spring -->
+
+<!-- Aqui é a Model -->
+
+```java
+package com.br.leonhart.meu_app;
+
+public class PacienteModel {
+    private long id;
+    private String nome;
+    private int idade;
+    private String endereco;
+
+    public PacienteModel(long id,String nome,int idade,String endereco) {
+        this.id = id;
+        this.nome = nome;
+        this.idade = idade;
+        this.endereco = endereco;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+}
+
+```
+
+<!-- Aqui é o Controller dessa Model -->
+
+```java
+package com.br.leonhart.meu_app;
+
+import java.util.ArrayList;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/api/pacientes")
+public class PacienteController {
+    private ArrayList<PacienteModel> pacientes = new ArrayList<>();
+
+    @GetMapping
+    public ArrayList<PacienteModel> read() {
+        return pacientes;
+    }
+
+    @PostMapping
+    public PacienteModel create(@RequestBody PacienteModel payload) {
+        // Incrementar sempre +1
+        long proximoId = pacientes.size() + 1;
+        // coloca o novo id dentro do payload
+        payload.setId(proximoId);
+
+        // adiciona o objeto do payload dentro da lista de pacientes
+        pacientes.add(payload);
+
+        // retorna o que foi adicionado
+        return payload;
+    }
+}
+
+```
+
+<!-- ------------------------------------------------------------ -->
