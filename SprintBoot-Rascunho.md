@@ -266,3 +266,40 @@ public class PacienteController {
 ```
 
 <!-- ------------------------------------------------------------ -->
+
+<!-- EXTRA BE04-17 | 📘 Aula - Query params -->
+
+<!-- Exemplo de rota: <http://meusite.com/api/usuarios?idade=30&cidade=SaoPaulo> -->
+
+```java
+import java.util.Optional;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class UsuarioController {
+
+    @GetMapping("/usuarios")
+    public String buscarUsuarios(
+        @RequestParam Optional<Integer> idade,
+            @RequestParam Optional<String> cidade) {
+                // Lógica para buscar os usuários com base na idade e cidade
+
+        String resposta = "Usuários";
+
+        if (!idade.isEmpty()) {
+            resposta += " com idade " + idade.get();
+        }
+
+        if (!cidade.isEmpty()) {
+            resposta += " da cidade " + cidade.get();
+        }
+
+        return resposta;
+    }
+}
+```
+
+<!-- ------------------------------------------------------------ -->
