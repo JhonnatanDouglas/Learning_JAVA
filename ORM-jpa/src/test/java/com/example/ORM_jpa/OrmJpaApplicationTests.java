@@ -1,10 +1,10 @@
-package com.br.leonhart.meu_app;
+package com.example.ORM_jpa;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MeuAppApplicationTests {
+class OrmJpaApplicationTests {
 
 	@Test
 	void contextLoads() {

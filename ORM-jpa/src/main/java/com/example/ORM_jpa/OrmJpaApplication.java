@@ -1,12 +1,13 @@
-package com.br.leonhart.meu_app;
+package com.example.ORM_jpa;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MeuAppApplication {
+public class OrmJpaApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MeuAppApplication.class, args);
+		SpringApplication.run(OrmJpaApplication.class, args);
 	}
+
 }
