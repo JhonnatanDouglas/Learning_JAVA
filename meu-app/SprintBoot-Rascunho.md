@@ -103,8 +103,41 @@ public class BE04_15_Annotations {
 ```
 
 <!-- ------------------------------------------------------------ -->
+<!-- ------------------------------------------------------------ -->
+
+<!-- BE04-16 | 📘 Aula - Parâmetros de Rota -->
+
+```java
+package com.br.leonhart.meu_app;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RequestMapping("/api/users")
+public class ControllerExemploParam {
+    @GetMapping("/{userId}")
+        public void getUserById(@PathVariable long userId) {
+            // Logica para buscar o ID
+    }
+
+    @GetMapping("/{userId}")
+        public long getUserId(@PathVariable long userId) {
+            return userId;
+    }
+
+    @GetMapping("/{userId}/posts/{postId}")
+        public String getUserId(@PathVariable long userId, @PathVariable long postId) {
+            return "O Id do Usuario é: " + userId + " e o Id do Post é: " + postId;
+    }
+}
+```
+
+<!-- ------------------------------------------------------------ -->
+<!-- ------------------------------------------------------------ -->
 
 <!-- BE04-16 | 📘 Aula - Implementando Criação e Leitura com Spring -->
+<!-- BE04-16 | 📘 Aula - Implementando Busca, Atualização e Deleção por Id com Spring -->
 
 <!-- Aqui é a Model -->
 
@@ -165,9 +198,13 @@ public class PacienteModel {
 package com.br.leonhart.meu_app;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -177,53 +214,55 @@ import org.springframework.web.bind.annotation.RestController;
 public class PacienteController {
     private ArrayList<PacienteModel> pacientes = new ArrayList<>();
 
+    // List TODOS os pacientes
     @GetMapping
     public ArrayList<PacienteModel> read() {
         return pacientes;
     }
 
+    // Cria um paciente
     @PostMapping
     public PacienteModel create(@RequestBody PacienteModel payload) {
-        // Incrementar sempre +1
         long proximoId = pacientes.size() + 1;
-        // coloca o novo id dentro do payload
         payload.setId(proximoId);
 
-        // adiciona o objeto do payload dentro da lista de pacientes
         pacientes.add(payload);
 
-        // retorna o que foi adicionado
         return payload;
+    }
+
+    // Busca UM paciente por id
+    @GetMapping("/{pacienteId}")
+    public Optional<PacienteModel> retrieve(@PathVariable Long pacienteId) {
+        return pacientes.stream()
+                .filter(p -> p.getId().equals(pacienteId))
+                .findFirst();
+    }
+
+    // Atualiza um paciente pelo Id com todas as informaçoes
+    @PutMapping("/{pacienteId}")
+    public Optional<PacienteModel> update(@PathVariable Long pacienteId, @RequestBody PacienteModel payload) {
+        var novosPacientes = pacientes.stream().map(p -> {
+            if (p.getId().equals(pacienteId)) {
+                payload.setId(p.getId());
+                return payload;
+            }
+            return p;
+        });
+
+        pacientes = new ArrayList<>(novosPacientes.toList());
+
+        return pacientes.stream().filter(p -> p.getId().equals(pacienteId)).findFirst();
+    }
+
+    // Deleta um paciente pelo id
+    @DeleteMapping("/{pacienteId}")
+    public void delete(@PathVariable Long pacienteId) {
+        // Aqui se cria uma nova lista onde o id informado nao existe dentro, logo, deletando ele da lista original
+        var novosPacientes = pacientes.stream().filter(p -> !p.getId().equals(pacienteId));
+        pacientes = new ArrayList<>(novosPacientes.toList());
     }
 }
 ```
 
 <!-- ------------------------------------------------------------ -->
-
-<!-- BE04-16 | 📘 Aula - Parâmetros de Rota -->
-
-```java
-package com.br.leonhart.meu_app;
-
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-@RequestMapping("/api/users")
-public class ControllerExemploParam {
-    @GetMapping("/{userId}")
-        public void getUserById(@PathVariable long userId) {
-            // Logica para buscar o ID
-    }
-
-    @GetMapping("/{userId}")
-        public long getUserId(@PathVariable long userId) {
-            return userId;
-    }
-
-    @GetMapping("/{userId}/posts/{postId}")
-        public String getUserId(@PathVariable long userId, @PathVariable long postId) {
-            return "O Id do Usuario é: " + userId + " e o Id do Post é: " + postId;
-    }
-}
-```

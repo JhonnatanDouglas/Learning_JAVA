@@ -1,23 +1,23 @@
 package com.br.leonhart.meu_app;
 
 public class PacienteModel {
-    private long id;
+    private Long id;
     private String nome;
     private int idade;
     private String endereco;
 
-    public PacienteModel(long id,String nome,int idade,String endereco) {
+    public PacienteModel(Long id,String nome,int idade,String endereco) {
         this.id = id;
         this.nome = nome;
         this.idade = idade;
         this.endereco = endereco;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
